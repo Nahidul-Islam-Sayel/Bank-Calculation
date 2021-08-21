@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MY Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-area">
+            <h1 class="text-center">Welcome To My Bank</h1>
+            <div class="submit-area">
+                <h4>Login</h4>
+                <br>
+                <input type="text" placeholder="Email" class="form-control">
+                <br>
+                <input type="password" name="" id="" placeholder="Password"class="form-control">
+                <br>
+                <button class="btn btn-success" id="login">Log In</button>
+            </div>
+    </div>
+    <div id="Transgition-area">
+        <div class="row">
+            <div class="col-md-4">
+             <div class="deposite status">
+                <h5>Deposite</h5>
+                <h2>$<spen id="Deposite">00</spen></h2>
+             </div>
+            </div>
+            <div class="col-md-4">
+                <div class="withdrow status">
+                        <h5>Withdrow</h5>
+                        <h2>$<span id="pastw">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance status">
+                        <h5>Blance</h5>
+                        <h2>$<span id="blance">240</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 submit-area">
+                <h4>Depostie</h4>
+                <br>
+                <input type="text" class="form-control" placeholder="$ amount You Want To Deposite" id="depositeAmount">
+                <br>
+                <button id="depositeAdd"class="btn-success">Deposite</button>
+            </div>
+            <div class="col-md-6 submit-area">
+                <h4>Withdraw</h4>
+                <br>
+                <input type="text" class="form-control" placeholder="$ amount You Want To Withdraw" id="wamount">
+                <br>
+                <button  class="btn-success" id="Withdraw">Withdraw</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var login = document.getElementById('login');
+        login.addEventListener('click',function(){
+            var remove = document.getElementById('login-area');
+            remove.style.display="none";
+            document.getElementById('Transgition-area').style.display='block';
+        })
+
+        var addDeposite = document.getElementById('depositeAdd');
+        addDeposite.addEventListener('click',function(){
+            var amount = document.getElementById("depositeAmount").value;
+            var amountNum = parseFloat(amount);
+            var initial  = document.getElementById('Deposite').innerText;
+            
+           
+        
+            update("Deposite",amountNum);
+            update("blance",amountNum);
+            document.getElementById("depositeAmount").value="";
+
+        })
+        function update(id,amountNum){
+            var cur =parseFloat(document.getElementById(id).innerText);
+            var total= cur+amountNum;
+            document.getElementById(id).innerText=total;
+            
+        }
+        var bar = document.getElementById("Withdraw");
+        bar.addEventListener("click",function(){
+            var wamount = document.getElementById("wamount").value;
+            var wamountnum = parseFloat(wamount);
+        
+            update("pastw",wamountnum);
+            update("blance",(-1*wamountnum));
+            document.getElementById("wamount").value="";
+        })
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+</body>
+</html>
